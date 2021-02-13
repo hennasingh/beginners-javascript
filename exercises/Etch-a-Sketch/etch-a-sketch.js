@@ -6,7 +6,7 @@ const ctx = canvas.getContext('2d');
 
 const shakeBtn = document.querySelector('.shake');
 
-const MOVE_AMOUNT = 10;
+const MOVE_AMOUNT = 30;
 
 // set up our canvas for drawing at random start point
 
