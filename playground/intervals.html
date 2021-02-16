@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intervals and Timers</title>
+    <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+
+    <script>
+        function buzzer() {
+            console.log('ENNNGGGG');
+        }
+
+        console.log('Starting');
+        const buzzTimer = setTimeout(buzzer, 500);
+        console.log('finishing');
+
+        // setInterval(buzzer, 300);
+
+        function setImmediateInterval(funcToRun, ms) {
+            // call that func right away
+            funcToRun();
+            // run a regular interval
+            return setInterval(funcToRun, ms);
+        }
+
+        // setImmediateInterval(buzzer, 2000);
+
+        window.addEventListener('click', function () {
+            console.log('Stopping Timer');
+            clearTimeout(buzzTimer);
+        });
+    </script>
+
+</body>
+
+</html>
