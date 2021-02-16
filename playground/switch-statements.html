@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+    <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+    <style>
+        .turt {
+            position: relative;
+            --x: 0px;
+            --y: 0px;
+            --rotateX: 0;
+            --rotate: 0;
+            transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotateX)) rotate(var(--rotate));
+            transition: transform 0.2s;
+        }
+    </style>
+
+    <img width="200" src="./turtle.png" alt="Turt" class="turt" />
+
+
+    <script>
+        const turtle = document.querySelector('.turt');
+        console.log(turtle);
+        let x = 0;
+        let y = 0;
+        const speed = 10;
+        let flipped = 'false';
+        let rotate = 0;
+
+        function handleKeyDown(event) {
+            // if not an arrow key, we dont care
+            console.log(event);
+            if (!event.key.includes('Arrow')) return;
+            switch (event.key) {
+                case 'ArrowUp':
+                    y -= 1;
+                    rotate = -90;
+                    break;
+                case 'ArrowDown':
+                    y += 1;
+                    rotate = 90;
+                    break;
+                case 'ArrowLeft':
+                    x -= 1;
+                    rotate = 0;
+                    flipped = true;
+                    break;
+                case 'ArrowRight':
+                    x += 1;
+                    rotate = 0;
+                    flipped = false;
+                    break;
+                default:
+                    console.log('That is not a valid move');
+                    break;
+            }
+            turtle.setAttribute(
+                'style',
+                `
+            --rotateX: ${flipped ? '180deg' : 0};
+            --x: ${x * speed}px;
+            --y: ${y * speed}px;
+            --rotate: ${rotate}deg;
+            `
+            );
+        }
+
+        window.addEventListener('keydown', handleKeyDown);
+    </script>
+
+</body>
+
+</html>
