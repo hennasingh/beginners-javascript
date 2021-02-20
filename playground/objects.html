@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+    <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+    <script src="https://unpkg.com/lodash"></script>
+    <script>
+        const person1 = {
+            first: 'Henna',
+            last: 'Singh',
+            clothing: {
+                shirts: 10,
+                pants: 2,
+            },
+        };
+
+        const person2 = {
+            first: 'Simer',
+            last: 'Anand',
+        };
+        /**
+         * The original reference is copied instead of making a copy of the object,
+         * Changing one changes the other
+         * */
+
+        // const person3 = person1;
+        // person3.first = 'Larry';
+        // console.log(person3.first);
+        // console.log(person1.first);
+        // const person3 = { ...person1 };
+
+        /**
+         * To make a copy, there are following two ways
+         */
+        const person3 = { ...person1 }; // spread operator
+        // eslint-disable-next-line prefer-object-spread
+        const person4 = Object.assign({}, person1);
+
+        person3.first = 'Larry';
+
+        /**
+         * The below line of code will change both the person3 and person1
+         * values. The spread operator only does shallow copy, the first level,
+         * for deep level of copying, you do clone (we make use of library -Lodash)
+         */
+
+        // person3.clothing.shirts = 100;
+
+        const person5 = _.cloneDeep(person1);
+        person5.clothing.shirts = 100;
+
+        const meatInventory = {
+            bacon: 2,
+            sausage: 3,
+            oyster: 10,
+        };
+
+        const veggieInventory = {
+            lettuce: 5,
+            tomatoes: 3,
+            oyster: 15,
+        };
+
+        const inventory = { ...meatInventory, ...veggieInventory };
+    </script>
+
+</body>
+
+</html>
