@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+
+    <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+    <script>
+        const names = ['Henna', 'Kate', 'Snickers'];
+
+        // Add Items
+        names.push('lita');
+        const names2 = [...names, 'andrew'];
+
+        // add in front
+        names.unshift('poppy');
+        console.log(names);
+        const names3 = ['poppy', ...names];
+        console.log(names3);
+
+        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        numbers.splice(3, 2);
+        console.log(numbers);
+
+        // No Array add method to add in middle
+        const bikes = ['bianchi', 'miele', 'panasonic', 'miyata'];
+
+        const newBikes = [...bikes.slice(0, 2), 'benotto', ...bikes.slice(2)];
+        console.log(newBikes);
+
+        // finding an index
+        const kaitIndex = names.findIndex((name) => name === 'Kate');
+
+        console.log(kaitIndex);
+        console.log(names[kaitIndex]);
+
+        // removing that value
+
+        const newNamesWithoutKate = [
+            // get everything up to Kate Index
+            ...names.slice(0, kaitIndex),
+            // everthing after Kate Index
+            ...names.slice(kaitIndex + 1),
+        ];
+
+        console.log(newNamesWithoutKate);
+
+        // const names = new Array();
+        // To check is something is an array or not
+        // Array.isArray(names)
+
+        // Accessing inside an array
+        // Mutation Method - DO CHANGE THE ORIGINAL DATA
+        /**
+         * Some methods will change the original array and some will keep it intact and
+         * form a new array, in this case original is modified
+         */
+        numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        // anytime you want to use a mutation method and NOT mutate the original array
+        // we need to take a copy of the array
+
+        const numbersReversed = [...numbers];
+        numbersReversed.reverse();
+        console.log(numbersReversed);
+        // numbers.reverse();
+        console.log(numbers);
+
+        // Immutable - THEY DO NOT CHANGE THE ORIGINAL DATA
+        const pizzaSlice = numbers.slice(2, 4);
+        console.log(pizzaSlice);
+    </script>
+</body>
+
+</html>
