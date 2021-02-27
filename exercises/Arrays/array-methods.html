@@ -150,20 +150,99 @@
           Callback Methods
         */
 
-// find the first rating that talks about a burger with find()
-// find all ratings that are above 2 with filter()
-// find all ratings that talk about a burger with filter()
-// Remove the one star rating however you like!
+        // find the first rating that talks about a burger with find()
+        function findBurgerRating(feedBack) {
+            return feedBack.comment.includes('burg');
+        }
 
-// check if there is at least 5 of one type of meat with some()
-// make sure we have at least 3 of every meat with every()
-// sort the toppings alphabetically with sort()
-// sort the order totals from most expensive to least with .sort()
-// Sort the prices with sort()
+        const burgRating2 = feedback.find(findBurgerRating);
+        console.log(burgRating2);
 
-        /*
-          Looping Methods (next)
-        */
+        // METHOD- 2
+        const burgRating = feedback.find((rating) => rating.comment.includes('burg'));
+        console.log(burgRating);
+
+        // METHOD -3
+        const findBurgRating = function (singleFeedback) {
+            return singleFeedback.comment.includes('burg');
+        };
+
+        console.log(feedback.find(findBurgRating));
+
+        // METHOD 4
+        const findSmoothie = (singleFeedback) =>
+            singleFeedback.comment.includes('Smoothie');
+
+        console.log(feedback.find(findSmoothie));
+
+        // METHOD 5 - and then call util.Name
+        const util = {
+            findRating(singleFeedback) {
+                return singleFeedback.comment.includes('burg');
+            },
+        };
+
+        // High Order Function
+        function findByWord(word) {
+            return function (singleFeedback) {
+                return singleFeedback.comment.includes(word);
+            };
+        }
+
+        const burgerRates = feedback.find(findByWord('burg'));
+        console.log(burgerRates);
+
+        // find all ratings that are above 2 with filter()
+        const goodReviews = feedback.filter(
+            (singleFeedback) => singleFeedback.rating > 2
+        );
+        console.table(goodReviews);
+
+        // find all ratings that talk about a burger with filter()
+        const burgRatings = feedback.filter(findByWord('burg'));
+        console.table(burgRatings);
+
+        // Remove the one star rating however you like!
+        const legitRatings = feedback.filter((single) => single.rating !== 1);
+        console.table(legitRatings);
+
+        // check if there is at least 5 of one type of meat with some()
+        const isThereMeat = Object.values(meats).some((meatValue) => meatValue >= 5);
+        console.log(isThereMeat);
+
+        // make sure we have at least 3 of every meat with every()
+        const isThereEveryMeat = Object.values(meats).every(
+            (meatValue) => meatValue >= 3
+        );
+        console.log(isThereEveryMeat);
+
+        // Sort
+        /* Sort converts the elements to string and then sort
+         ** so for sorting numbers, a callback is needed
+         */
+        const numbers = [1, 2, 100, 3, 200, 400, 155];
+        const numbersSorted = numbers.sort((first, second) => first - second);
+        console.log(numbersSorted);
+
+        // sort the toppings alphabetically with sort()
+        console.log(toppings.sort());
+
+        // sort the order totals from most expensive to least with .sort()
+        function numberSort(a, b) {
+            return a - b;
+        }
+        console.log(orderTotals.sort(numberSort));
+
+        // Sort the prices with sort()
+        const sortByPrice = Object.entries(prices).sort(function (a, b) {
+            // call debugger here to check the state
+            return a[1] - b[1];
+        });
+
+        console.table(sortByPrice);
+
+        // converting back to Object
+        console.table(Object.fromEntries(sortByPrice));
     </script>
 </body>
 
