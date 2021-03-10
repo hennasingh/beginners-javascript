@@ -1,0 +1,28 @@
+{
+    "name": "pixelated-face",
+    "version": "1.0.0",
+    "description": "",
+    "main": "pixelated-face.js",
+    "scripts": {
+        "start": "parcel face.html"
+    },
+    "author": "",
+    "license": "ISC",
+    "browserslist": [
+        "last 1 Chrome version"
+    ],
+    "dependencies": {
+        "parcel": "^2.0.0-alpha.2.1"
+    },
+    "devDependencies": {
+        "@parcel/optimizer-cssnano": "^2.0.0-nightly.612",
+        "@parcel/optimizer-htmlnano": "^2.0.0-nightly.612",
+        "@parcel/packager-css": "^2.0.0-nightly.612",
+        "@parcel/packager-html": "^2.0.0-nightly.612",
+        "@parcel/transformer-css": "^2.0.0-nightly.612",
+        "@parcel/transformer-html": "^2.0.0-nightly.612",
+        "@parcel/transformer-postcss": "^2.0.0-nightly.612",
+        "@parcel/transformer-posthtml": "^2.0.0-nightly.612",
+        "postcss": "^8.2.6"
+    }
+}
